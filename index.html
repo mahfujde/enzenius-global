@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enzenius Global | Premier Overseas Education & Visa Experts</title>
+    
+    <!-- Primary SEO -->
+    <meta name="description" content="Enzenius Consultancy Services Limited (Enzenius Global) is a leading overseas education consultancy. Expert visa assistance and university admissions for UK, USA, Canada, and Australia." />
+    <meta name="keywords" content="Enzenius Global, study abroad, student visa, overseas education, Malaysia education consultant, Indonesia study abroad" />
+    <link rel="icon" type="image/png" href="images/logo.png" />
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="Enzenius Global - Empowering Global Education Journeys" />
+    <meta property="og:description" content="98% Visa success rate since 2015. Your gateway to top-ranked global universities." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://enzeniusglobal.com/" />
+    <meta property="og:image" content="https://enzeniusglobal.com/images/logo.png" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#131130',
+              brandDeep: '#0D0B24', 
+              brandRoyal: '#0072BC',
+              brandGrowth: '#8DC63F',
+              brandCTA: '#F37021',
+              brandGold: '#F8B612',
+              brandSoft: '#F8FAFC',
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+          }
+        }
+      }
+    </script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+      :root {
+        --nav-height-mobile: 80px;
+        --nav-height-desktop: 132px;
+      }
+      body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+      .nav-link { position: relative; padding-bottom: 2px; }
+      .nav-link::after { content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 0; background-color: #F37021; transition: width 0.3s ease; }
+      .nav-link:hover::after { width: 100%; }
+      .logo-text-gradient {
+        background: linear-gradient(to right, #F8B612, #F37021);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar { width: 8px; }
+      ::-webkit-scrollbar-track { background: #f1f1f1; }
+      ::-webkit-scrollbar-thumb { background: #131130; border-radius: 10px; }
+      ::-webkit-scrollbar-thumb:hover { background: #F37021; }
+    </style>
+    <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.35.0"
+  }
+}
+</script>
+  <link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-white text-slate-900 overflow-x-hidden">
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
