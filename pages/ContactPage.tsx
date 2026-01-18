@@ -2,17 +2,29 @@ import React from 'react';
 import OfficeLocations from '../components/OfficeLocations';
 
 const ContactPage: React.FC = () => {
-  const applyFormUrl = "https://forms.zohopublic.com/aucklandenzgm1/form/Primaryinformationform/formperma/5h49y5YaIsrzFQCsSgmcUpnW93PH_2Pq5nM1Us0EC8Y";
+  const applyFormUrl = "https://forms.zohopublic.com/pumasolutionsglobalgm1/form/StudentAssessment/formperma/Zgn5DTfvr31olMyn3d5sKFnEbSv9HALS4_wOnGR5AQE";
   const whatsappNumber = "601161169434";
   const whatsappMsg = encodeURIComponent("Hello Enzenius Global, I am looking for a consultation regarding my overseas studies.");
 
   return (
     <div className="bg-white">
-      {/* Contact Header */}
-      <section className="py-20 bg-slate-50 border-b border-slate-200">
-        <div className="container mx-auto px-6 text-center">
-          <h1 className="text-5xl font-black text-primary mb-6 uppercase tracking-tighter">Get In Touch</h1>
-          <p className="text-xl text-slate-500 max-w-2xl mx-auto">Have questions? Our regional experts are just a message away. Reach out to our specialized hubs.</p>
+      {/* Banner Section */}
+      <section className="relative w-full h-56 sm:h-64 md:h-80 lg:h-96 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url('https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=2000&auto=format&fit=crop')` }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/75 to-slate-900/60"></div>
+        </div>
+        <div className="relative h-full flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-12">
+          <div className="text-center">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white uppercase tracking-tight mb-2 md:mb-4">
+              Get In Touch
+            </h1>
+            <p className="text-blue-100/95 text-sm sm:text-base md:text-lg font-medium max-w-2xl mx-auto leading-relaxed px-2">
+              Have questions? Our regional experts are just a message away. Reach out to our specialized hubs.
+            </p>
+          </div>
         </div>
       </section>
 

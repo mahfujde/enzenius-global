@@ -1,14 +1,13 @@
 import React, { useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import Hero from '../components/Hero';
 import Stats from '../components/Stats';
 import Services from '../components/Services';
 import Destinations from '../components/Destinations';
 import OfficeLocations from '../components/OfficeLocations';
 import Certifications from '../components/Certifications';
-import { Page } from '../App';
 
 interface HomePageProps {
-  onNavigate: (page: Page) => void;
 }
 
 const testimonials = [
@@ -54,8 +53,8 @@ const testimonials = [
   }
 ];
 
-const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
-  const applyFormUrl = "https://forms.zohopublic.com/aucklandenzgm1/form/Primaryinformationform/formperma/5h49y5YaIsrzFQCsSgmcUpnW93PH_2Pq5nM1Us0EC8Y";
+const HomePage: React.FC<HomePageProps> = () => {
+  const applyFormUrl = "https://forms.zohopublic.com/pumasolutionsglobalgm1/form/StudentAssessment/formperma/Zgn5DTfvr31olMyn3d5sKFnEbSv9HALS4_wOnGR5AQE";
   const userCountry = useMemo(() => {
     const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
     if (tz.includes('Kuala_Lumpur')) return 'Malaysia';
@@ -65,7 +64,115 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
 
   return (
     <div className="space-y-0">
-      <Hero onNavigate={onNavigate} detectedCountry={userCountry} />
+      <Hero detectedCountry={userCountry} />
+      
+      {/* Certified Excellence Section */}
+      <section className="py-12 md:py-16 bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-100 relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23131130' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+            backgroundSize: '60px 60px'
+          }}></div>
+        </div>
+        <div className="absolute top-0 left-0 w-96 h-96 bg-brandCTA/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-brandRoyal/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
+        
+        <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 relative z-10">
+          <div className="max-w-7xl mx-auto">
+            <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-2xl border border-white/50 p-6 md:p-10 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-40 h-40 bg-brandCTA/10 blur-3xl rounded-full"></div>
+              <div className="absolute bottom-0 left-0 w-32 h-32 bg-brandGrowth/10 blur-2xl rounded-full"></div>
+              
+              <div className="relative z-10">
+                <div className="flex flex-col lg:flex-row gap-8 md:gap-12">
+                  {/* Left Side - Takes 30% */}
+                  <div className="lg:w-[30%]">
+                    <div className="bg-gradient-to-br from-primary/5 via-brandCTA/5 to-brandGrowth/5 rounded-2xl p-6 md:p-8 border-2 border-brandCTA/20 shadow-lg relative overflow-hidden">
+                      {/* Decorative elements */}
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-brandCTA/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
+                      <div className="absolute bottom-0 left-0 w-24 h-24 bg-brandGrowth/10 rounded-full blur-xl translate-y-1/2 -translate-x-1/2"></div>
+                      
+                      <div className="relative z-10">
+                        <div className="mb-6">
+                          <div className="w-16 h-16 bg-brandCTA/20 rounded-full flex items-center justify-center mb-4 border-2 border-brandCTA/30">
+                            <i className="fas fa-award text-brandCTA text-2xl"></i>
+                          </div>
+                          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-2 uppercase tracking-tight">Certified Excellence</h2>
+                          <p className="text-slate-700 text-sm md:text-base font-semibold uppercase tracking-wide mb-6">ICEF & British Council Certified Counselors</p>
+                        </div>
+                        
+                        <div className="space-y-4">
+                          <div className="flex items-center gap-3 p-4 bg-white/80 backdrop-blur-sm rounded-lg border border-brandGrowth/20 shadow-sm">
+                            <i className="fas fa-check-circle text-brandGrowth text-xl flex-shrink-0"></i>
+                            <span className="text-slate-700 font-bold uppercase text-xs md:text-sm tracking-wide">98% Visa Success Rate</span>
+                          </div>
+                          <div className="flex items-center gap-3 p-4 bg-white/80 backdrop-blur-sm rounded-lg border border-brandGrowth/20 shadow-sm">
+                            <i className="fas fa-check-circle text-brandGrowth text-xl flex-shrink-0"></i>
+                            <span className="text-slate-700 font-bold uppercase text-xs md:text-sm tracking-wide">600+ Partner Universities</span>
+                          </div>
+                          <div className="flex items-center gap-3 p-4 bg-white/80 backdrop-blur-sm rounded-lg border border-brandGrowth/20 shadow-sm">
+                            <i className="fas fa-check-circle text-brandGrowth text-xl flex-shrink-0"></i>
+                            <span className="text-slate-700 font-bold uppercase text-xs md:text-sm tracking-wide">Official GTE Cell</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Right Side - Takes 70% */}
+                  <div className="lg:w-[70%]">
+                    <div className="mb-6">
+                      <h3 className="text-xl md:text-2xl font-bold text-primary mb-2 uppercase tracking-tight">Your one-stop solution to study abroad</h3>
+                      <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-6">
+                        Complete, end-to-end support system for international students, simplifying the entire study abroad journey into one seamless service.
+                      </p>
+                    </div>
+                    
+                    <div>
+                      <h4 className="text-sm md:text-base font-bold text-primary mb-4 uppercase tracking-wide">Key Services Offered</h4>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="flex items-center gap-3 p-4 bg-slate-50 rounded-lg">
+                          <i className="fas fa-check-circle text-brandGrowth text-xl flex-shrink-0"></i>
+                          <span className="text-slate-700 font-bold uppercase text-xs md:text-sm tracking-wide">Consultation</span>
+                        </div>
+                        <div className="flex items-center gap-3 p-4 bg-slate-50 rounded-lg">
+                          <i className="fas fa-check-circle text-brandGrowth text-xl flex-shrink-0"></i>
+                          <span className="text-slate-700 font-bold uppercase text-xs md:text-sm tracking-wide">Application Assistance</span>
+                        </div>
+                        <div className="flex items-center gap-3 p-4 bg-slate-50 rounded-lg">
+                          <i className="fas fa-check-circle text-brandGrowth text-xl flex-shrink-0"></i>
+                          <span className="text-slate-700 font-bold uppercase text-xs md:text-sm tracking-wide">English Test Preparation</span>
+                        </div>
+                        <div className="flex items-center gap-3 p-4 bg-slate-50 rounded-lg">
+                          <i className="fas fa-check-circle text-brandGrowth text-xl flex-shrink-0"></i>
+                          <span className="text-slate-700 font-bold uppercase text-xs md:text-sm tracking-wide">Scholarship Guidance</span>
+                        </div>
+                        <div className="flex items-center gap-3 p-4 bg-slate-50 rounded-lg">
+                          <i className="fas fa-check-circle text-brandGrowth text-xl flex-shrink-0"></i>
+                          <span className="text-slate-700 font-bold uppercase text-xs md:text-sm tracking-wide">Visa Support</span>
+                        </div>
+                        <div className="flex items-center gap-3 p-4 bg-slate-50 rounded-lg">
+                          <i className="fas fa-check-circle text-brandGrowth text-xl flex-shrink-0"></i>
+                          <span className="text-slate-700 font-bold uppercase text-xs md:text-sm tracking-wide">Financial Aid</span>
+                        </div>
+                        <div className="flex items-center gap-3 p-4 bg-slate-50 rounded-lg">
+                          <i className="fas fa-check-circle text-brandGrowth text-xl flex-shrink-0"></i>
+                          <span className="text-slate-700 font-bold uppercase text-xs md:text-sm tracking-wide">Pre-Departure Services</span>
+                        </div>
+                        <div className="flex items-center gap-3 p-4 bg-slate-50 rounded-lg">
+                          <i className="fas fa-check-circle text-brandGrowth text-xl flex-shrink-0"></i>
+                          <span className="text-slate-700 font-bold uppercase text-xs md:text-sm tracking-wide">Post-Arrival Support</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       
       <section className="py-20 bg-white">
         <article className="container mx-auto px-6 md:px-12 text-center max-w-4xl">
@@ -73,15 +180,15 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             Enzenius Global: {userCountry !== 'Global' ? `${userCountry}'s` : 'Your'} Gateway to Elite Higher Education
           </h2>
           <p className="text-lg text-slate-600 leading-relaxed mb-10 font-medium">
-            Since <strong>2015</strong>, Enzenius Consultancy Services Limited has been a dominant force in the international education sector. Operating across <strong>Malaysia</strong> and <strong>Indonesia</strong>, we represent over <strong>600+ partner universities</strong> globally.
+            Since <strong>2015</strong>, Enzenius Global has been a dominant force in the international education sector. Operating across <strong>Malaysia</strong> and <strong>Indonesia</strong>, we represent over <strong>600+ partner universities</strong> globally.
           </p>
           <div className="flex justify-center gap-4">
-            <button 
-              onClick={() => onNavigate('about')}
+            <Link 
+              to="/about"
               className="text-brandCTA font-black flex items-center gap-3 hover:translate-x-1 transition-transform uppercase tracking-[0.2em] text-xs"
             >
               Learn Our Story <i className="fas fa-arrow-right"></i>
-            </button>
+            </Link>
           </div>
         </article>
       </section>
@@ -133,7 +240,7 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       </section>
 
       <div id="destinations">
-        <Destinations onNavigate={onNavigate} />
+        <Destinations />
       </div>
 
       <section className="py-24 bg-white overflow-hidden">

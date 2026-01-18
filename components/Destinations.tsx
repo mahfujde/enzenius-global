@@ -1,9 +1,5 @@
 import React from 'react';
-import { Page } from '../App';
-
-interface DestinationsProps {
-  onNavigate?: (page: Page) => void;
-}
+import { Link } from 'react-router-dom';
 
 const destinations = [
   { name: 'New Zealand', image: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&q=80&w=800', slug: 'new-zealand' },
@@ -16,7 +12,7 @@ const destinations = [
   { name: 'Europe', image: 'https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&q=80&w=800', slug: 'europe' }
 ];
 
-const Destinations: React.FC<DestinationsProps> = ({ onNavigate }) => {
+const Destinations: React.FC = () => {
   return (
     <section className="py-24 bg-white">
       <div className="container mx-auto px-6 md:px-12">
@@ -25,22 +21,20 @@ const Destinations: React.FC<DestinationsProps> = ({ onNavigate }) => {
             <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4 uppercase tracking-tighter">Study Destinations</h2>
             <p className="text-slate-600">Choose from prestigious institutions across the globe. We help you find the perfect match for your academic background.</p>
           </div>
-          {onNavigate && (
-            <button 
-              onClick={() => onNavigate('destinations')}
-              className="text-primary font-black uppercase tracking-widest text-sm flex items-center gap-2 hover:gap-3 transition-all"
-            >
-              View Detailed Countries <i className="fas fa-arrow-right"></i>
-            </button>
-          )}
+          <Link 
+            to="/destinations"
+            className="text-primary font-black uppercase tracking-widest text-sm flex items-center gap-2 hover:gap-3 transition-all"
+          >
+            View Detailed Countries <i className="fas fa-arrow-right"></i>
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {destinations.map((dest, index) => (
-            <div 
+            <Link 
               key={index} 
-              onClick={() => onNavigate && onNavigate(dest.slug as Page)}
-              className="relative h-64 rounded-2xl overflow-hidden group cursor-pointer shadow-lg"
+              to={`/destination/${dest.slug}`}
+              className="relative h-64 rounded-2xl overflow-hidden group cursor-pointer shadow-lg block"
             >
               <img 
                 src={dest.image} 
@@ -52,7 +46,7 @@ const Destinations: React.FC<DestinationsProps> = ({ onNavigate }) => {
                 <h3 className="text-2xl font-black mb-1 uppercase tracking-tighter text-white">{dest.name}</h3>
                 <p className="text-sm text-blue-200 opacity-0 group-hover:opacity-100 transition-opacity font-bold uppercase tracking-widest">Explore Opportunities</p>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

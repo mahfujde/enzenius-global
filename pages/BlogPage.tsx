@@ -1,14 +1,12 @@
 
 import React, { useEffect, useState } from 'react';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { fetchPosts, fetchPostById } from '../services/wordpressService';
 import { BlogPost } from '../types';
 
-interface BlogPageProps {
-  onPostSelect?: (postId: number) => void;
-  selectedPostId?: number | null;
-}
-
-const BlogPage: React.FC<BlogPageProps> = ({ onPostSelect, selectedPostId }) => {
+const BlogPage: React.FC = () => {
+  const { postId } = useParams<{ postId?: string }>();
+  const navigate = useNavigate();
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [singlePost, setSinglePost] = useState<BlogPost | null>(null);
@@ -16,8 +14,8 @@ const BlogPage: React.FC<BlogPageProps> = ({ onPostSelect, selectedPostId }) => 
   useEffect(() => {
     const loadContent = async () => {
       setLoading(true);
-      if (selectedPostId) {
-        const post = await fetchPostById(selectedPostId);
+      if (postId) {
+        const post = await fetchPostById(parseInt(postId));
         setSinglePost(post);
       } else {
         const data = await fetchPosts();
@@ -26,7 +24,7 @@ const BlogPage: React.FC<BlogPageProps> = ({ onPostSelect, selectedPostId }) => 
       setLoading(false);
     };
     loadContent();
-  }, [selectedPostId]);
+  }, [postId]);
 
   if (loading) {
     return (
@@ -78,12 +76,12 @@ const BlogPage: React.FC<BlogPageProps> = ({ onPostSelect, selectedPostId }) => 
             />
             
             <div className="mt-20 pt-10 border-t border-slate-100 flex justify-between items-center">
-               <button 
-                 onClick={() => onPostSelect?.(0)} 
+               <Link 
+                 to="/blogs"
                  className="flex items-center gap-2 font-black uppercase tracking-widest text-xs text-primary hover:text-brandCTA transition-colors"
                >
                  <i className="fas fa-arrow-left"></i> Back to Archive
-               </button>
+               </Link>
                <div className="flex gap-4">
                  <button className="text-slate-400 hover:text-primary transition-colors"><i className="fab fa-facebook-f"></i></button>
                  <button className="text-slate-400 hover:text-primary transition-colors"><i className="fab fa-twitter"></i></button>
@@ -99,14 +97,24 @@ const BlogPage: React.FC<BlogPageProps> = ({ onPostSelect, selectedPostId }) => 
   // Archive List View
   return (
     <div className="bg-slate-50 min-h-screen pb-24">
-      <section className="bg-primary text-white py-24 overflow-hidden relative">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-brandCTA/10 blur-[120px] rounded-full"></div>
-        <div className="container mx-auto px-6 text-center relative z-10">
-          <span className="text-brandCTA font-black uppercase tracking-[0.4em] text-[10px] block mb-4">The Global Insight</span>
-          <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-6">Expert Blogs</h1>
-          <p className="text-xl text-blue-100/60 max-w-2xl mx-auto font-medium">
-            Stay updated with the latest trends in overseas education, visa regulations, and university admissions.
-          </p>
+      {/* Banner Section */}
+      <section className="relative h-64 md:h-80 lg:h-96 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url('https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=2000&auto=format&fit=crop')` }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/70 to-slate-900/50"></div>
+        </div>
+        <div className="relative h-full flex items-center px-6 md:px-12">
+          <div className="container mx-auto text-center">
+            <span className="text-brandCTA font-black uppercase tracking-[0.4em] text-[10px] block mb-4">The Global Insight</span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-tighter mb-4">
+              Expert Blogs & Resources
+            </h1>
+            <p className="text-blue-100 text-lg md:text-xl font-medium max-w-2xl mx-auto">
+              Stay updated with the latest trends in overseas education, visa regulations, and university admissions.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -121,10 +129,10 @@ const BlogPage: React.FC<BlogPageProps> = ({ onPostSelect, selectedPostId }) => 
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
               {posts.map((post) => (
-                <article 
+                <Link 
                   key={post.id} 
-                  onClick={() => onPostSelect?.(post.id)}
-                  className="bg-white rounded-[2.5rem] overflow-hidden border border-slate-100 shadow-sm hover:shadow-2xl transition-all group cursor-pointer flex flex-col h-full"
+                  to={`/blogs/${post.id}`}
+                  className="bg-white rounded-[2.5rem] overflow-hidden border border-slate-100 shadow-sm hover:shadow-2xl transition-all group cursor-pointer flex flex-col h-full block"
                 >
                   <div className="relative h-64 overflow-hidden">
                     <img 
@@ -165,7 +173,7 @@ const BlogPage: React.FC<BlogPageProps> = ({ onPostSelect, selectedPostId }) => 
                       </div>
                     </div>
                   </div>
-                </article>
+                </Link>
               ))}
             </div>
           )}

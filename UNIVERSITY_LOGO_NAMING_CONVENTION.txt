@@ -1,0 +1,103 @@
+UNIVERSITY LOGO NAMING CONVENTION
+==================================
+
+Please rename and upload your university logos using the following naming convention:
+Format: [country]-[university-name-lowercase-with-dashes].png
+
+UK UNIVERSITIES (10 logos):
+1. uk-oxford.png
+2. uk-cambridge.png
+3. uk-imperial.png
+4. uk-ucl.png
+5. uk-edinburgh.png
+6. uk-manchester.png
+7. uk-kings-college.png
+8. uk-lse.png
+9. uk-warwick.png
+10. uk-bristol.png
+
+USA UNIVERSITIES (10 logos):
+11. usa-harvard.png
+12. usa-stanford.png
+13. usa-mit.png
+14. usa-yale.png
+15. usa-princeton.png
+16. usa-columbia.png
+17. usa-uchicago.png
+18. usa-berkeley.png
+19. usa-upenn.png
+20. usa-cornell.png
+
+CANADA UNIVERSITIES (10 logos):
+21. canada-toronto.png
+22. canada-ubc.png
+23. canada-mcgill.png
+24. canada-mcmaster.png
+25. canada-alberta.png
+26. canada-waterloo.png
+27. canada-western.png
+28. canada-queens.png
+29. canada-montreal.png
+30. canada-simon-fraser.png
+
+AUSTRALIA UNIVERSITIES (10 logos):
+31. australia-anu.png
+32. australia-melbourne.png
+33. australia-sydney.png
+34. australia-queensland.png
+35. australia-monash.png
+36. australia-unsw.png
+37. australia-uwa.png
+38. australia-adelaide.png
+39. australia-uts.png
+40. australia-macquarie.png
+
+NEW ZEALAND UNIVERSITIES (8 logos):
+41. newzealand-auckland.png
+42. newzealand-otago.png
+43. newzealand-victoria-wellington.png
+44. newzealand-canterbury.png
+45. newzealand-massey.png
+46. newzealand-lincoln.png
+47. newzealand-waikato.png
+48. newzealand-aut.png
+
+MALAYSIA UNIVERSITIES (10 logos):
+49. malaysia-malaya.png
+50. malaysia-putra.png
+51. malaysia-kebangsaan.png
+52. malaysia-sains.png
+53. malaysia-teknologi.png
+54. malaysia-taylors.png
+55. malaysia-monash.png
+56. malaysia-sunway.png
+57. malaysia-ucsi.png
+58. malaysia-nottingham.png
+
+INDONESIA UNIVERSITIES (10 logos):
+59. indonesia-ui.png
+60. indonesia-gadjah-mada.png
+61. indonesia-itb.png
+62. indonesia-ipb.png
+63. indonesia-airlangga.png
+64. indonesia-diponegoro.png
+65. indonesia-its.png
+66. indonesia-brawijaya.png
+67. indonesia-padjadjaran.png
+68. indonesia-hasanuddin.png
+
+EUROPE UNIVERSITIES (10 logos):
+69. europe-tum.png
+70. europe-eth-zurich.png
+71. europe-amsterdam.png
+72. europe-sorbonne.png
+73. europe-copenhagen.png
+74. europe-ku-leuven.png
+75. europe-tu-delft.png
+76. europe-heidelberg.png
+77. europe-bologna.png
+78. europe-lmu.png
+
+TOTAL: 78 University Logos
+
+Upload all these files to: /public/images/universities-logos/

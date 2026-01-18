@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
+import SEO from './components/SEO';
+import { useSEOConfig } from './utils/seoConfig';
 
 // Pages
 import HomePage from './pages/HomePage';
@@ -18,58 +21,70 @@ import CookiesPage from './pages/CookiesPage';
 export type DestinationSlug = 'new-zealand' | 'malaysia' | 'indonesia' | 'australia' | 'uk' | 'usa' | 'canada' | 'europe';
 export type Page = 'home' | 'about' | 'services' | 'destinations' | 'contact' | 'blogs' | 'privacy' | 'terms' | 'cookies' | DestinationSlug;
 
-const App: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState<Page>('home');
-  const [selectedPostId, setSelectedPostId] = useState<number | null>(null);
-
+// Scroll to top component
+const ScrollToTop: React.FC = () => {
+  const location = useLocation();
+  
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [currentPage, selectedPostId]);
+  }, [location.pathname]);
+  
+  return null;
+};
 
-  const handleBlogNavigation = (postId: number) => {
-    if (postId === 0) {
-      setSelectedPostId(null);
-      setCurrentPage('blogs');
-    } else {
-      setSelectedPostId(postId);
-      setCurrentPage('blogs');
-    }
-  };
+const AppContent: React.FC = () => {
+  const seoConfig = useSEOConfig();
+  const location = useLocation();
+  const baseUrl = 'https://enzeniusglobal.com';
+  const canonical = `${baseUrl}${location.pathname}`;
 
-  const renderPage = () => {
-    const slugs: DestinationSlug[] = ['new-zealand', 'malaysia', 'indonesia', 'australia', 'uk', 'usa', 'canada', 'europe'];
-    
-    if (slugs.includes(currentPage as DestinationSlug)) {
-      return <DestinationDetailPage slug={currentPage as DestinationSlug} onNavigate={setCurrentPage} />;
-    }
-
-    switch (currentPage) {
-      case 'home': return <HomePage onNavigate={setCurrentPage} />;
-      case 'about': return <AboutPage />;
-      case 'services': return <ServicesPage />;
-      case 'destinations': return <DestinationsPage onSelectDestination={setCurrentPage} />;
-      case 'contact': return <ContactPage />;
-      case 'blogs': return <BlogPage onPostSelect={handleBlogNavigation} selectedPostId={selectedPostId} />;
-      case 'privacy': return <PrivacyPolicyPage />;
-      case 'terms': return <TermsOfServicePage />;
-      case 'cookies': return <CookiesPage />;
-      default: return <HomePage onNavigate={setCurrentPage} />;
-    }
-  };
+  // Handle structured data - keep as array for multiple schemas
+  const structuredData = seoConfig.structuredData;
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Navbar currentPage={currentPage} onNavigate={(p) => { setCurrentPage(p); setSelectedPostId(null); }} />
+      <SEO
+        title={seoConfig.title}
+        description={seoConfig.description}
+        keywords={seoConfig.keywords}
+        image={seoConfig.image}
+        type={seoConfig.type}
+        noindex={seoConfig.noindex}
+        canonical={canonical}
+        structuredData={structuredData}
+      />
+      <Navbar />
+      <ScrollToTop />
       {/* 
         Standardized top padding ensures no overlap with fixed header.
         Mobile Header is approx 84px, Desktop with top bar is approx 132px.
       */}
       <main className="flex-grow pt-[84px] lg:pt-[132px]">
-        {renderPage()}
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/destinations" element={<DestinationsPage />} />
+          <Route path="/destination/:slug" element={<DestinationDetailPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/blogs" element={<BlogPage />} />
+          <Route path="/blogs/:postId" element={<BlogPage />} />
+          <Route path="/privacy" element={<PrivacyPolicyPage />} />
+          <Route path="/terms" element={<TermsOfServicePage />} />
+          <Route path="/cookies" element={<CookiesPage />} />
+        </Routes>
       </main>
-      <Footer onNavigate={(p) => { setCurrentPage(p); setSelectedPostId(null); }} />
+      <Footer />
       <WhatsAppButton />
     </div>
+  );
+};
+
+const App: React.FC = () => {
+  return (
+    <Router>
+      <AppContent />
+    </Router>
   );
 };
 

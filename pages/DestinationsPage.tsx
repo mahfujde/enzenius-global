@@ -1,9 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { DestinationSlug } from '../App';
-
-interface DestinationsPageProps {
-  onSelectDestination: (slug: DestinationSlug) => void;
-}
 
 const destinations: { name: string; slug: DestinationSlug; title: string; desc: string; img: string; highlights: string[] }[] = [
   { 
@@ -72,23 +69,138 @@ const destinations: { name: string; slug: DestinationSlug; title: string; desc: 
   }
 ];
 
-const DestinationsPage: React.FC<DestinationsPageProps> = ({ onSelectDestination }) => {
+interface University {
+  name: string;
+  country: string;
+  logo: string;
+}
+
+const partneredUniversities: University[] = [
+  // UK Universities
+  { name: 'Oxford', country: 'UK', logo: '/images/universities-logos/uk-oxford.png' },
+  { name: 'Cambridge', country: 'UK', logo: '/images/universities-logos/uk-cambridge.png' },
+  { name: 'Imperial College', country: 'UK', logo: '/images/universities-logos/uk-imperial.png' },
+  { name: 'UCL', country: 'UK', logo: '/images/universities-logos/uk-ucl.png' },
+  { name: 'Edinburgh', country: 'UK', logo: '/images/universities-logos/uk-edinburgh.png' },
+  { name: 'Manchester', country: 'UK', logo: '/images/universities-logos/uk-manchester.png' },
+  { name: 'King\'s College', country: 'UK', logo: '/images/universities-logos/uk-kings-college.png' },
+  { name: 'LSE', country: 'UK', logo: '/images/universities-logos/uk-lse.png' },
+  { name: 'Warwick', country: 'UK', logo: '/images/universities-logos/uk-warwick.png' },
+  { name: 'Bristol', country: 'UK', logo: '/images/universities-logos/uk-bristol.png' },
+  
+  // USA Universities
+  { name: 'Harvard', country: 'USA', logo: '/images/universities-logos/usa-harvard.png' },
+  { name: 'Stanford', country: 'USA', logo: '/images/universities-logos/usa-stanford.png' },
+  { name: 'MIT', country: 'USA', logo: '/images/universities-logos/usa-mit.png' },
+  { name: 'Yale', country: 'USA', logo: '/images/universities-logos/usa-yale.png' },
+  { name: 'Princeton', country: 'USA', logo: '/images/universities-logos/usa-princeton.png' },
+  { name: 'Columbia', country: 'USA', logo: '/images/universities-logos/usa-columbia.png' },
+  { name: 'UChicago', country: 'USA', logo: '/images/universities-logos/usa-uchicago.png' },
+  { name: 'UC Berkeley', country: 'USA', logo: '/images/universities-logos/usa-berkeley.png' },
+  { name: 'UPenn', country: 'USA', logo: '/images/universities-logos/usa-upenn.png' },
+  { name: 'Cornell', country: 'USA', logo: '/images/universities-logos/usa-cornell.png' },
+  
+  // Canada Universities
+  { name: 'Toronto', country: 'Canada', logo: '/images/universities-logos/canada-toronto.png' },
+  { name: 'UBC', country: 'Canada', logo: '/images/universities-logos/canada-ubc.png' },
+  { name: 'McGill', country: 'Canada', logo: '/images/universities-logos/canada-mcgill.png' },
+  { name: 'McMaster', country: 'Canada', logo: '/images/universities-logos/canada-mcmaster.png' },
+  { name: 'Alberta', country: 'Canada', logo: '/images/universities-logos/canada-alberta.png' },
+  { name: 'Waterloo', country: 'Canada', logo: '/images/universities-logos/canada-waterloo.png' },
+  { name: 'Western', country: 'Canada', logo: '/images/universities-logos/canada-western.png' },
+  { name: 'Queen\'s', country: 'Canada', logo: '/images/universities-logos/canada-queens.png' },
+  { name: 'Montreal', country: 'Canada', logo: '/images/universities-logos/canada-montreal.png' },
+  { name: 'Simon Fraser', country: 'Canada', logo: '/images/universities-logos/canada-simon-fraser.png' },
+  
+  // Australia Universities
+  { name: 'ANU', country: 'Australia', logo: '/images/universities-logos/australia-anu.png' },
+  { name: 'Melbourne', country: 'Australia', logo: '/images/universities-logos/australia-melbourne.png' },
+  { name: 'Sydney', country: 'Australia', logo: '/images/universities-logos/australia-sydney.png' },
+  { name: 'Queensland', country: 'Australia', logo: '/images/universities-logos/australia-queensland.png' },
+  { name: 'Monash', country: 'Australia', logo: '/images/universities-logos/australia-monash.png' },
+  { name: 'UNSW', country: 'Australia', logo: '/images/universities-logos/australia-unsw.png' },
+  { name: 'UWA', country: 'Australia', logo: '/images/universities-logos/australia-uwa.png' },
+  { name: 'Adelaide', country: 'Australia', logo: '/images/universities-logos/australia-adelaide.png' },
+  { name: 'UTS', country: 'Australia', logo: '/images/universities-logos/australia-uts.png' },
+  { name: 'Macquarie', country: 'Australia', logo: '/images/universities-logos/australia-macquarie.png' },
+  
+  // New Zealand Universities
+  { name: 'Auckland', country: 'New Zealand', logo: '/images/universities-logos/newzealand-auckland.png' },
+  { name: 'Otago', country: 'New Zealand', logo: '/images/universities-logos/newzealand-otago.png' },
+  { name: 'Victoria Wellington', country: 'New Zealand', logo: '/images/universities-logos/newzealand-victoria-wellington.png' },
+  { name: 'Canterbury', country: 'New Zealand', logo: '/images/universities-logos/newzealand-canterbury.png' },
+  { name: 'Massey', country: 'New Zealand', logo: '/images/universities-logos/newzealand-massey.png' },
+  { name: 'Lincoln', country: 'New Zealand', logo: '/images/universities-logos/newzealand-lincoln.png' },
+  { name: 'Waikato', country: 'New Zealand', logo: '/images/universities-logos/newzealand-waikato.png' },
+  { name: 'AUT', country: 'New Zealand', logo: '/images/universities-logos/newzealand-aut.png' },
+  
+  // Malaysia Universities
+  { name: 'Malaya', country: 'Malaysia', logo: '/images/universities-logos/malaysia-malaya.png' },
+  { name: 'Putra', country: 'Malaysia', logo: '/images/universities-logos/malaysia-putra.png' },
+  { name: 'Kebangsaan', country: 'Malaysia', logo: '/images/universities-logos/malaysia-kebangsaan.png' },
+  { name: 'Sains', country: 'Malaysia', logo: '/images/universities-logos/malaysia-sains.png' },
+  { name: 'Teknologi', country: 'Malaysia', logo: '/images/universities-logos/malaysia-teknologi.png' },
+  { name: 'Taylor\'s', country: 'Malaysia', logo: '/images/universities-logos/malaysia-taylors.png' },
+  { name: 'Monash Malaysia', country: 'Malaysia', logo: '/images/universities-logos/malaysia-monash.png' },
+  { name: 'Sunway', country: 'Malaysia', logo: '/images/universities-logos/malaysia-sunway.png' },
+  { name: 'UCSI', country: 'Malaysia', logo: '/images/universities-logos/malaysia-ucsi.png' },
+  { name: 'Nottingham Malaysia', country: 'Malaysia', logo: '/images/universities-logos/malaysia-nottingham.png' },
+  
+  // Indonesia Universities
+  { name: 'UI', country: 'Indonesia', logo: '/images/universities-logos/indonesia-ui.png' },
+  { name: 'Gadjah Mada', country: 'Indonesia', logo: '/images/universities-logos/indonesia-gadjah-mada.png' },
+  { name: 'ITB', country: 'Indonesia', logo: '/images/universities-logos/indonesia-itb.png' },
+  { name: 'IPB', country: 'Indonesia', logo: '/images/universities-logos/indonesia-ipb.png' },
+  { name: 'Airlangga', country: 'Indonesia', logo: '/images/universities-logos/indonesia-airlangga.png' },
+  { name: 'Diponegoro', country: 'Indonesia', logo: '/images/universities-logos/indonesia-diponegoro.png' },
+  { name: 'ITS', country: 'Indonesia', logo: '/images/universities-logos/indonesia-its.png' },
+  { name: 'Brawijaya', country: 'Indonesia', logo: '/images/universities-logos/indonesia-brawijaya.png' },
+  { name: 'Padjadjaran', country: 'Indonesia', logo: '/images/universities-logos/indonesia-padjadjaran.png' },
+  { name: 'Hasanuddin', country: 'Indonesia', logo: '/images/universities-logos/indonesia-hasanuddin.png' },
+  
+  // Europe Universities
+  { name: 'TUM', country: 'Europe', logo: '/images/universities-logos/europe-tum.png' },
+  { name: 'ETH Zurich', country: 'Europe', logo: '/images/universities-logos/europe-eth-zurich.png' },
+  { name: 'Amsterdam', country: 'Europe', logo: '/images/universities-logos/europe-amsterdam.png' },
+  { name: 'Sorbonne', country: 'Europe', logo: '/images/universities-logos/europe-sorbonne.png' },
+  { name: 'Copenhagen', country: 'Europe', logo: '/images/universities-logos/europe-copenhagen.png' },
+  { name: 'KU Leuven', country: 'Europe', logo: '/images/universities-logos/europe-ku-leuven.png' },
+  { name: 'TU Delft', country: 'Europe', logo: '/images/universities-logos/europe-tu-delft.png' },
+  { name: 'Heidelberg', country: 'Europe', logo: '/images/universities-logos/europe-heidelberg.png' },
+  { name: 'Bologna', country: 'Europe', logo: '/images/universities-logos/europe-bologna.png' },
+  { name: 'LMU', country: 'Europe', logo: '/images/universities-logos/europe-lmu.png' },
+];
+
+const DestinationsPage: React.FC = () => {
   return (
     <div className="bg-slate-50">
-      <section className="bg-slate-900 text-white py-16 md:py-24 lg:py-32">
-        <div className="container mx-auto px-6 text-center">
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-black mb-4 md:mb-6 uppercase tracking-tighter text-white">Choose Your Destination</h1>
-          <p className="text-sm md:text-xl text-blue-100/80 max-w-2xl mx-auto font-medium">Explore the best countries to build your academic career. Our experts are ready to guide you through every step.</p>
+      {/* Banner Section */}
+      <section className="relative h-64 md:h-80 lg:h-96 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=2000&auto=format&fit=crop')` }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/70 to-slate-900/50"></div>
+        </div>
+        <div className="relative h-full flex items-center px-6 md:px-12">
+          <div className="container mx-auto text-center">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-tighter mb-4">
+              Choose Your Destination
+            </h1>
+            <p className="text-blue-100 text-lg md:text-xl font-medium max-w-2xl mx-auto">
+              Explore the best countries to build your academic career. Our experts are ready to guide you through every step.
+            </p>
+          </div>
         </div>
       </section>
 
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-6 md:px-12 grid gap-8 lg:gap-12 lg:grid-cols-2">
           {destinations.map((dest, i) => (
-            <div 
+            <Link 
               key={i} 
-              onClick={() => onSelectDestination(dest.slug)}
-              className="bg-white rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-xl border border-slate-100 flex flex-col sm:flex-row hover:shadow-2xl transition-all group cursor-pointer active:scale-[0.98]"
+              to={`/destination/${dest.slug}`}
+              className="bg-white rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-xl border border-slate-100 flex flex-col sm:flex-row hover:shadow-2xl transition-all group cursor-pointer active:scale-[0.98] block"
             >
               <div className="sm:w-1/3 relative h-48 sm:h-auto overflow-hidden">
                 <img src={dest.img} alt={dest.name} className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
@@ -111,8 +223,50 @@ const DestinationsPage: React.FC<DestinationsPageProps> = ({ onSelectDestination
                   ))}
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
+        </div>
+      </section>
+
+      {/* Partnered Universities Section */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="container mx-auto px-6 md:px-12">
+          <h2 className="text-3xl md:text-4xl font-black text-center text-primary mb-4 uppercase tracking-tighter">
+            Partnered Universities Worldwide
+          </h2>
+          <p className="text-center text-slate-600 mb-12 max-w-3xl mx-auto">
+            We proudly partner with {partneredUniversities.length}+ prestigious universities across the globe to bring you world-class education opportunities.
+          </p>
+          
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-8 xl:grid-cols-10 gap-4 md:gap-6">
+            {partneredUniversities.map((university, index) => (
+              <div key={index} className="flex flex-col items-center justify-center group">
+                <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 flex items-center justify-center bg-slate-50 rounded-xl p-3 md:p-4 transition-all group-hover:shadow-xl group-hover:scale-105 border border-slate-200">
+                  <img 
+                    src={university.logo} 
+                    alt={`${university.name} logo`}
+                    className="w-full h-full object-contain"
+                    loading="lazy"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                      const parent = target.parentElement;
+                      if (parent && !parent.querySelector('.fallback-text')) {
+                        const fallback = document.createElement('div');
+                        fallback.className = 'fallback-text text-primary font-black text-xs text-center';
+                        fallback.textContent = university.name.substring(0, 3).toUpperCase();
+                        parent.appendChild(fallback);
+                      }
+                    }}
+                  />
+                </div>
+                <p className="mt-2 text-[8px] sm:text-[9px] md:text-[10px] font-bold text-center text-slate-700 leading-tight px-1">
+                  {university.name}
+                </p>
+                <span className="text-[7px] text-slate-400 font-semibold uppercase">{university.country}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
     </div>

@@ -4,10 +4,23 @@ import React from 'react';
 const TermsOfServicePage: React.FC = () => {
   return (
     <div className="bg-white min-h-screen">
-      <section className="bg-slate-900 text-white py-20">
-        <div className="container mx-auto px-6 md:px-12">
-          <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-4">Terms of Service</h1>
-          <p className="text-blue-100 max-w-2xl font-medium">Last Updated: January 2024</p>
+      {/* Banner Section */}
+      <section className="relative h-64 md:h-80 lg:h-96 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=2000&auto=format&fit=crop')` }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/70 to-slate-900/50"></div>
+        </div>
+        <div className="relative h-full flex items-center px-6 md:px-12">
+          <div className="container mx-auto">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-tighter mb-4">
+              Terms of Service
+            </h1>
+            <p className="text-blue-100 text-lg md:text-xl font-medium max-w-2xl">
+              Please review our terms before using our services. <span className="block mt-2 text-sm">Last Updated: January 2024</span>
+            </p>
+          </div>
         </div>
       </section>
 
@@ -15,7 +28,7 @@ const TermsOfServicePage: React.FC = () => {
         <div className="container mx-auto px-6 md:px-12 max-w-4xl">
           <div className="prose prose-slate prose-lg max-w-none text-slate-600 space-y-10">
             <p>
-              Welcome to Enzenius Consultancy Services Limited. By accessing our website or engaging our services, you agree to be bound by the following terms and conditions.
+              Welcome to Enzenius Global. By accessing our website or engaging our services, you agree to be bound by the following terms and conditions.
             </p>
 
             <div>

@@ -40,17 +40,23 @@ const AboutPage: React.FC = () => {
 
   return (
     <article className="animate-in fade-in slide-in-from-bottom-2 duration-700">
-      {/* Brand Header */}
-      <section className="bg-primary text-white py-24 relative overflow-hidden" aria-labelledby="about-title">
-        <div className="absolute inset-0 bg-primary/95 mix-blend-multiply"></div>
-        <div className="absolute right-0 top-0 w-1/2 h-full bg-gradient-to-l from-brandCTA/20 to-transparent"></div>
-        <div className="container mx-auto px-6 md:px-12 relative z-10">
-          <h1 id="about-title" className="text-5xl md:text-7xl font-black mb-6 uppercase tracking-tighter text-white">
-            Global Leadership & <br/> Corporate Vision
-          </h1>
-          <p className="text-xl text-blue-100 max-w-2xl font-medium">
-            Bridging aspirations across Malaysia and Indonesia with over a decade of elite excellence in global education.
-          </p>
+      {/* Banner Section */}
+      <section className="relative w-full h-56 sm:h-64 md:h-80 lg:h-96 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2000&auto=format&fit=crop')` }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/75 to-slate-900/60"></div>
+        </div>
+        <div className="relative h-full flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-12">
+          <div className="text-center">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white uppercase tracking-tight mb-2 md:mb-4">
+              About Enzenius Global
+            </h1>
+            <p className="text-blue-100/95 text-sm sm:text-base md:text-lg font-medium max-w-2xl mx-auto leading-relaxed px-2">
+              Discover the stories, values, and vision that drive our mission to transform educational futures.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -92,7 +98,7 @@ const AboutPage: React.FC = () => {
               </h2>
               <div className="space-y-6 text-slate-600 leading-relaxed text-lg font-medium italic">
                 <p>
-                  "Since 2015, my vision for <strong>Enzenius Consultancy Services Limited</strong> has been to create a bridge where local talent meets global opportunity. We believe every student in Indonesia and Malaysia deserves access to the world's finest classrooms."
+                  "Since 2015, my vision for <strong>Enzenius Global</strong> has been to create a bridge where local talent meets global opportunity. We believe every student in Indonesia and Malaysia deserves access to the world's finest classrooms."
                 </p>
                 <p>
                   "Through our strategic synergy with our sister concern, <strong>Pt. Puma Solutions Global</strong>, we have solidified our presence as a regional powerhouse. We are not just a consultancy; we are your lifelong partners in academic and professional success."
@@ -104,7 +110,7 @@ const AboutPage: React.FC = () => {
                   <div>
                     <p className="text-2xl font-black text-primary uppercase tracking-tighter">Dwi Putri Iraningsih</p>
                     <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mt-1">
-                      Director, Enzenius Consultancy Services Limited <br/> 
+                      Director, Enzenius Global <br/> 
                       Director, Pt. Puma Solutions Global
                     </p>
                   </div>

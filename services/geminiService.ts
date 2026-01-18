@@ -9,7 +9,7 @@ export const getAIResponse = async (userMessage: string) => {
       model: 'gemini-3-flash-preview',
       contents: userMessage,
       config: {
-        systemInstruction: `You are the professional and elite AI assistant for "Enzenius Consultancy Services Limited", also known as "Enzenius Global". 
+        systemInstruction: `You are the professional and elite AI assistant for "Enzenius Global". 
         
         IDENTITY & TONE:
         - Maintain a prestigious, authoritative, yet approachable tone.

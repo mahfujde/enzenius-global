@@ -4,10 +4,23 @@ import React from 'react';
 const CookiesPage: React.FC = () => {
   return (
     <div className="bg-white min-h-screen">
-      <section className="bg-slate-900 text-white py-20">
-        <div className="container mx-auto px-6 md:px-12">
-          <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-4">Cookies Policy</h1>
-          <p className="text-blue-100 max-w-2xl font-medium">How we use tracking technologies</p>
+      {/* Banner Section */}
+      <section className="relative h-64 md:h-80 lg:h-96 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url('https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=2000&auto=format&fit=crop')` }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/70 to-slate-900/50"></div>
+        </div>
+        <div className="relative h-full flex items-center px-6 md:px-12">
+          <div className="container mx-auto">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-tighter mb-4">
+              Cookies Policy
+            </h1>
+            <p className="text-blue-100 text-lg md:text-xl font-medium max-w-2xl">
+              Understand how we use cookies to enhance your experience and protect your privacy.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -15,7 +28,7 @@ const CookiesPage: React.FC = () => {
         <div className="container mx-auto px-6 md:px-12 max-w-4xl">
           <div className="prose prose-slate prose-lg max-w-none text-slate-600 space-y-10">
             <p>
-              This Cookies Policy explains how Enzenius Consultancy Services Limited uses cookies and similar technologies to recognize you when you visit our website.
+              This Cookies Policy explains how Enzenius Global uses cookies and similar technologies to recognize you when you visit our website.
             </p>
 
             <div>
